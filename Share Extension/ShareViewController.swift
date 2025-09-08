@@ -312,7 +312,6 @@ struct ShareExtensionView: View {
         urlRequest.httpBody = try encoder.encode(requestBody)
         urlRequest.timeoutInterval = 30.0
         
-        // Masked logging for verification
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
         
         guard let httpResponse = response as? HTTPURLResponse,

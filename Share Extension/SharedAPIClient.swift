@@ -408,20 +408,9 @@ class APIClient: ObservableObject {
         var urlRequest = URLRequest(url: endpoint)
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        // Ensure auth headers are explicitly set on the request (in addition to session defaults)
-        let token = (ProcessInfo.processInfo.environment["API_TOKEN"] ??
-                     (Bundle.main.object(forInfoDictionaryKey: "API_TOKEN") as? String) ??
-                     "3b5f7153-cf34-4bdd-85d8-2342ba12a4bc")
-        urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
-        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        urlRequest.setValue(token, forHTTPHeaderField: "X-API-Token")
         urlRequest.httpBody = try encoder.encode(request)
         urlRequest.timeoutInterval = 30.0
         
-        // Masked logging for verification
-        let tokenPreview = String(token.prefix(6)) + "…"
-        logger.debug("POST /process-url with headers: Accept=application/json, Authorization=Bearer (prefix: \(tokenPreview, privacy: .private)), X-API-Token set, baseURL=\(self.baseURL, privacy: .public)")
-
         let (data, response) = try await session.data(for: urlRequest)
         
         guard let httpResponse = response as? HTTPURLResponse else {

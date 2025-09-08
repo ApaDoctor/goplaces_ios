@@ -23,7 +23,7 @@
 	<key>API_BASE_URL</key>
 	<string>http://api-production-b29f.up.railway.app</string>
 	<key>API_TOKEN</key>
-	<string>3b5f7153-cf34-4bdd-85d8-2342ba12a4bc</string>
+	<string>$(API_TOKEN)</string>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionAttributes</key>
