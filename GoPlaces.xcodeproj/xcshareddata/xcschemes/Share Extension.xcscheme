@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "1640"
+   wasCreatedForAppExtension = "YES"
+   version = "2.2">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES"
+      buildArchitectures = "Automatic">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <AutocreatedTestPlanReference>
+            </AutocreatedTestPlanReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2E673B5F2E6998040016E9C0"
+               BuildableName = "Share Extension.appex"
+               BlueprintName = "Share Extension"
+               ReferencedContainer = "container:GoPlaces.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2E74D7562E68B3280050E344"
+               BuildableName = "GoPlaces.app"
+               BlueprintName = "GoPlaces"
+               ReferencedContainer = "container:GoPlaces.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      shouldAutocreateTestPlan = "YES">
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = ""
+      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
+      launchStyle = "0"
+      askForAppToLaunch = "Yes"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES"
+      launchAutomaticallySubstyle = "2">
+      <RemoteRunnable
+         runnableDebuggingMode = "1"
+         BundleIdentifier = "goplaces.GoPlaces"
+         RemotePath = "/Users/volodymyrpiskun/Library/Developer/CoreSimulator/Devices/9DE25A18-105C-4273-85FE-03BF67E9E727/data/Containers/Bundle/Application/D9C94F49-6551-4031-A1FC-80AE9219D5E8/GoPlaces.app">
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2E74D7562E68B3280050E344"
+            BuildableName = "GoPlaces.app"
+            BlueprintName = "GoPlaces"
+            ReferencedContainer = "container:GoPlaces.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES"
+      askForAppToLaunch = "Yes"
+      launchAutomaticallySubstyle = "2">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2E74D7562E68B3280050E344"
+            BuildableName = "GoPlaces.app"
+            BlueprintName = "GoPlaces"
+            ReferencedContainer = "container:GoPlaces.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>
