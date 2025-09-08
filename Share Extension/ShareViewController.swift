@@ -313,9 +313,6 @@ struct ShareExtensionView: View {
         urlRequest.timeoutInterval = 30.0
         
         // Masked logging for verification
-        let tokenPreview = String(token.prefix(6)) + "…"
-        print("[ShareExt] POST /process-url headers: Accept=application/json, Authorization=Bearer (prefix: \(tokenPreview)), X-API-Token set, baseURL=\(baseURL)")
-
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
         
         guard let httpResponse = response as? HTTPURLResponse,
