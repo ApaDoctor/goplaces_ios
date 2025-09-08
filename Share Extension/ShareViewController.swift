@@ -293,7 +293,7 @@ struct ShareExtensionView: View {
     
     private func startProcessingTask(url: String) async throws -> TaskResponse {
         let requestBody = ProcessURLRequest(url: url)
-        let baseURL = (ProcessInfo.processInfo.environment["API_BASE_URL"]) ?? (Bundle.main.object(forInfoDictionaryKey: "API_BASE_URL") as? String) ?? "http://api-production-b29f.up.railway.app"
+        let baseURL = (ProcessInfo.processInfo.environment["API_BASE_URL"]) ?? (Bundle.main.object(forInfoDictionaryKey: "API_BASE_URL") as? String) ?? "https://api-production-b29f.up.railway.app"
         let endpoint = URL(string: "\(baseURL)/process-url")!
         
         var urlRequest = URLRequest(url: endpoint)
@@ -302,8 +302,9 @@ struct ShareExtensionView: View {
         // Ensure Authorization token is passed like in APIClient
         let token = (ProcessInfo.processInfo.environment["API_TOKEN"] ??
                      (Bundle.main.object(forInfoDictionaryKey: "API_TOKEN") as? String) ??
-                     "goplaces-test-token")
+                     "3b5f7153-cf34-4bdd-85d8-2342ba12a4bc")
         urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        urlRequest.setValue(token, forHTTPHeaderField: "X-API-Token")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
         let encoder = JSONEncoder()
@@ -311,6 +312,10 @@ struct ShareExtensionView: View {
         urlRequest.httpBody = try encoder.encode(requestBody)
         urlRequest.timeoutInterval = 30.0
         
+        // Masked logging for verification
+        let tokenPreview = String(token.prefix(6)) + "…"
+        print("[ShareExt] POST /process-url headers: Accept=application/json, Authorization=Bearer (prefix: \(tokenPreview)), X-API-Token set, baseURL=\(baseURL)")
+
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
         
         guard let httpResponse = response as? HTTPURLResponse,
@@ -479,10 +484,7 @@ struct ShareExtensionView: View {
                 let notificationFeedback = UINotificationFeedbackGenerator()
                 notificationFeedback.notificationOccurred(.success)
                 
-                // Proactively nudge the main app to foreground to show updated collections
-                if let appURL = URL(string: "goplaces://collections") {
-                    ExtensionContextManager.shared.extensionContext?.open(appURL, completionHandler: nil)
-                }
+                // Do not attempt to open the main app from a share extension to avoid RBS assertion errors
             }
             
         } catch {
