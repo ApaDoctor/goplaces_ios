@@ -299,10 +299,17 @@ struct ShareExtensionView: View {
         var urlRequest = URLRequest(url: endpoint)
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        // Ensure Authorization token is passed like in APIClient
+        let token = (ProcessInfo.processInfo.environment["API_TOKEN"] ??
+                     (Bundle.main.object(forInfoDictionaryKey: "API_TOKEN") as? String) ??
+                     "goplaces-test-token")
+        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .iso8601
         urlRequest.httpBody = try encoder.encode(requestBody)
+        urlRequest.timeoutInterval = 30.0
         
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
         
